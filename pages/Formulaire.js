@@ -1,16 +1,16 @@
-import { StyleSheet, Text, View, TextInput, Picker, TouchableOpacity } from 'react-native';
 import React, { useState, useEffect } from 'react';
+import { StyleSheet, Text, View, TextInput, TouchableOpacity } from 'react-native';
+import { Picker } from '@react-native-picker/picker';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import uuid from 'react-native-uuid';
 
-
 const getImportanceColor = (importance) => {
   switch (importance) {
-    case 'Importante':
+    case 'High':
       return '#F45B69'; 
-    case 'Normal':
+    case 'Medium':
       return '#FFD4CA';
-    case 'Reminder':
+    case 'Low':
       return '#7EE4EC'; 
     default:
       return '#fff'; 
@@ -49,12 +49,13 @@ const Formulaire = ({ route, navigation }) => {
       console.error("Error retrieving data:", error);
     }
   };
+
   const save = async () => {
     try {
       const newNotes = [...allNote, {
         id: uuid.v4(),
         title: inputTitle,
-        Content: inputContent,
+        content: inputContent,
         importance: inputImportance,
         date: startDate
       }];
@@ -65,8 +66,6 @@ const Formulaire = ({ route, navigation }) => {
       console.error("Error saving data:", error);
     }
   };
-
-
 
   const modifier = async () => {
     try {
@@ -114,7 +113,7 @@ const Formulaire = ({ route, navigation }) => {
           <Picker
             selectedValue={inputImportance}
             style={[styles.picker, { borderColor: getImportanceColor(inputImportance) }]}
-            onValueChange={setInputImportance}
+            onValueChange={(itemValue) => setInputImportance(itemValue)}
           >
             <Picker.Item label="Low" value="Low" />
             <Picker.Item label="Medium" value="Medium" />
@@ -140,8 +139,8 @@ const Formulaire = ({ route, navigation }) => {
           />
           <Picker
             selectedValue={inputImportanceModif}
-            style={[styles.picker, { borderColor: getImportanceColor(inputImportanceModif) }]} 
-            onValueChange={setInputImportanceModif}
+            style={[styles.picker, { borderColor: getImportanceColor(inputImportanceModif) }]}
+            onValueChange={(itemValue) => setInputImportanceModif(itemValue)}
           >
             <Picker.Item label="Low" value="Low" />
             <Picker.Item label="Medium" value="Medium" />
@@ -179,6 +178,7 @@ const styles = StyleSheet.create({
     width: '100%',
     marginBottom: 15,
     borderWidth: 1,
+    borderColor: 'gray',
   },
   button: {
     padding: 20,
