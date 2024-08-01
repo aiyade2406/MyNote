@@ -78,7 +78,7 @@ const Formulaire = ({ route, navigation }) => {
           return {
             ...note,
             title: inputTitleModif,
-            Content: inputContentModif,
+            content: inputContentModif,
             importance: inputImportanceModif,
             date: startDate,
           };
