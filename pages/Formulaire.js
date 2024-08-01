@@ -7,13 +7,13 @@ import uuid from 'react-native-uuid';
 const getImportanceColor = (importance) => {
   switch (importance) {
     case 'High':
-      return '#F45B69'; 
+      return '#F45B69';
     case 'Medium':
       return '#FFD4CA';
     case 'Low':
-      return '#7EE4EC'; 
+      return '#7EE4EC';
     default:
-      return '#fff'; 
+      return '#fff';
   }
 };
 
@@ -52,13 +52,16 @@ const Formulaire = ({ route, navigation }) => {
 
   const save = async () => {
     try {
-      const newNotes = [...allNote, {
-        id: uuid.v4(),
-        title: inputTitle,
-        content: inputContent,
-        importance: inputImportance,
-        date: startDate
-      }];
+      const newNotes = [
+        ...allNote,
+        {
+          id: uuid.v4(),
+          title: inputTitle,
+          content: inputContent,
+          importance: inputImportance,
+          date: startDate,
+        },
+      ];
       await AsyncStorage.setItem('MyNote', JSON.stringify(newNotes));
       setAllNote(newNotes);
       navigation.navigate('Dashboard');
@@ -70,14 +73,14 @@ const Formulaire = ({ route, navigation }) => {
   const modifier = async () => {
     try {
       const { id } = route.params || {};
-      const newNotes = allNote.map(note => {
+      const newNotes = allNote.map((note) => {
         if (note.id === id) {
           return {
             ...note,
             title: inputTitleModif,
             Content: inputContentModif,
             importance: inputImportanceModif,
-            date: startDate
+            date: startDate,
           };
         } else {
           return note;

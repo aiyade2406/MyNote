@@ -16,10 +16,9 @@ const getImportanceColor = (importance) => {
   }
 };
 
-const Dashboard = ({ navigation, route }) => {
+const Dashboard = ({ navigation }) => {
   const [allNote, setAllNote] = useState([]);
   const isFocused = useIsFocused(); 
-
 
   const load = async () => {
     try {
@@ -52,10 +51,16 @@ const Dashboard = ({ navigation, route }) => {
     <View style={styles.container}>
       <Text style={styles.title}>MyNote</Text>
       <View style={styles.buttonContainer}>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Formulaire')} >
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={() => navigation.navigate('Formulaire')}
+        >
           <Text style={styles.buttonText}>Add</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={remove} >
+        <TouchableOpacity 
+          style={styles.button} 
+          onPress={remove}
+        >
           <Text style={styles.buttonText}>Delete All</Text>
         </TouchableOpacity>
       </View>
@@ -69,8 +74,8 @@ const Dashboard = ({ navigation, route }) => {
             <Text style={styles.title_note}>{note.title}</Text>
             <Text style={styles.info}>Date: {note.date}</Text>
             <Text style={styles.content} numberOfLines={4}>
-  Content: {note.Content}
-</Text>
+              Content: {note.Content}
+            </Text>
             <Text style={styles.importance}>Importance: {note.importance}</Text>
           </TouchableOpacity>
         ))}
@@ -100,15 +105,13 @@ const styles = StyleSheet.create({
     justifyContent: 'space-around',
   },
   scrollViewContent: {
-    flexGrow: 1, 
+    flexGrow: 1,
   },
-  content:{
-    fontSize:20,
+  content: {
+    fontSize: 20,
     fontFamily: 'Montserrat',
-
-
   },
-  importance:{
+  importance: {
     fontSize: 17,
     fontFamily: 'Montserrat',
   },
@@ -130,9 +133,9 @@ const styles = StyleSheet.create({
     fontFamily: 'Montserrat',
   },
   button: {
-    backgroundColor: '#114B5F', 
+    backgroundColor: '#114B5F',
     paddingVertical: 22,
-    paddingHorizontal:35,
+    paddingHorizontal: 35,
     borderRadius: 6,
     marginVertical: 5,
     alignItems: 'center',

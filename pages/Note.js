@@ -24,7 +24,12 @@ const Note = ({ route, navigation }) => {
   return (
     <View style={styles.container}>
       <ScrollView contentContainerStyle={styles.scrollViewContent}>
-      <Text style={styles.dashboard} onPress={() => navigation.navigate('Dashboard')}>Dashboard</Text>
+        <Text
+          style={styles.dashboard}
+          onPress={() => navigation.navigate('Dashboard')}
+        >
+          Dashboard
+        </Text>
         <Text style={styles.date}>Note Details</Text>
         <Text style={styles.date}>{note.date}</Text>
         <Text style={styles.title}>{note.title}</Text>
@@ -34,71 +39,68 @@ const Note = ({ route, navigation }) => {
         <TouchableOpacity style={styles.button} onPress={() => remove(note.id)}>
           <Text style={styles.buttonText}>Supprimer</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('Formulaire', { id: note.id, title: note.title, content: note.Content })}>
+        <TouchableOpacity
+          style={styles.button}
+          onPress={() => navigation.navigate('Formulaire', { id: note.id, title: note.title, content: note.Content })}
+        >
           <Text style={styles.buttonText}>Modifier</Text>
         </TouchableOpacity>
-      
       </View>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#F8F9FA',
     padding: 20,
-    justifyContent: 'flex-end', 
+    justifyContent: 'flex-end',
     fontFamily: 'Montserrat',
   },
   scrollViewContent: {
-    paddingBottom: 120, 
+    paddingBottom: 120,
   },
   title: {
     fontSize: 50,
     fontWeight: 'bold',
-    color: '#343A40', 
+    color: '#343A40',
     marginBottom: 8,
     fontFamily: 'Montserrat',
   },
   date: {
     fontSize: 16,
-    color: '#6C757D', 
+    color: '#6C757D',
     marginBottom: 12,
     fontFamily: 'Montserrat',
   },
-  dashboard:{
+  dashboard: {
     fontSize: 20,
     fontFamily: 'Montserrat',
-    color:"grey",
-    textDecorationLine:"underline",
-  
+    color: "grey",
+    textDecorationLine: "underline",
   },
   content: {
     fontSize: 16,
-    color: '#495057', 
+    color: '#495057',
     marginBottom: 20,
     fontFamily: 'Montserrat',
-    lineHeight: 24, 
+    lineHeight: 24,
   },
   button: {
-    backgroundColor: '#114B5F', 
-    width: 100,  
-    height: 100, 
-    borderRadius: 50, 
+    backgroundColor: '#F8F9FA',
+    width: 100,
+    height: 100,
+    borderRadius: 50,
     justifyContent: 'center',
-    alignItems: 'center', 
-       backgroundColor: '#F8F9FA',
-       borderWidth: 1,
-       borderColor: '#114B5F',
-       borderRadius: 50,
+    alignItems: 'center',
+    borderWidth: 1,
+    borderColor: '#114B5F',
   },
   buttonText: {
-    color: '#FFFFFF',
+    color: 'black',
     fontSize: 16,
     fontFamily: 'Montserrat',
-    color:"black"
-
   },
   zoneButton: {
     flexDirection: 'row',
@@ -106,9 +108,8 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: '#114B5F',
     borderRadius: 50,
-  
-    backgroundColor: '#114B5F', 
-    marginBottom: 20, 
+    backgroundColor: '#114B5F',
+    marginBottom: 20,
   },
 });
 

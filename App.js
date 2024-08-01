@@ -1,5 +1,3 @@
-// App.js
-
 import React, { useState, useEffect } from 'react';
 import { StyleSheet, Text, View } from 'react-native';
 import { NavigationContainer } from '@react-navigation/native';
@@ -9,11 +7,9 @@ import Note from './pages/Note';
 import Formulaire from './pages/Formulaire';
 import Dashboard from './pages/Dashboard';
 
-// Fonction pour charger les polices
 const getFonts = () => {
   return Font.loadAsync({
     'Montserrat': require('./assets/fonts/Montserrat.ttf'),
-  
   });
 };
 
@@ -32,8 +28,11 @@ const App = () => {
   }, []);
 
   if (!fontsLoaded) {
-    // Affiche un écran de chargement pendant que les polices sont chargées
-    return <View style={styles.container}><Text>Loading...</Text></View>;
+    return (
+      <View style={styles.container}>
+        <Text>Loading...</Text>
+      </View>
+    );
   }
 
   return (
