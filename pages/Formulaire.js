@@ -57,7 +57,7 @@ const Formulaire = ({ route, navigation }) => {
         {
           id: uuid.v4(),
           title: inputTitle,
-          content: inputContent,
+          Content: inputContent,
           importance: inputImportance,
           date: startDate,
         },
