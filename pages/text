@@ -1,0 +1,72 @@
+import { StatusBar } from 'expo-status-bar';
+import { StyleSheet, Text, View,Button,Alert, TextInput,SafeAreaView, } from 'react-native';
+import React, { useState } from 'react';
+
+
+export default function Home() {
+
+  const [inputTitle, setInputTitle] = useState("");
+   // Correction ici
+   const [inputContent, setInputContent] = useState("");
+   const [inputDate, setInputDate] = useState("");
+   const [todo, setTodo] = useState([]);
+   const [startDate, setStartDate] = useState(new Date().toLocaleString())
+
+   function add(){
+    setTodo([...todo,{title:inputTitle,Content:inputContent,date:startDate}])
+
+    setInputContent("");
+    setInputTitle("");
+   }
+  return (
+    
+
+    <View style={styles.container}>
+           <Text style={styles.titre}>MyNote</Text>
+      <TextInput
+        placeholder="Titre"
+        style={styles.input} onChangeText={setInputTitle} value={inputTitle}/>
+             
+
+           
+             <TextInput
+        placeholder="Content"
+        style={styles.input} onChangeText={setInputContent} value={inputContent}/>
+            
+            <Button title="Add" onPress={add}></Button>
+
+        {todo.map((tod)=>(
+          <View style={styles.note}>
+       <Text style={styles.info}>Titre: {tod.title}</Text>
+        <Text  style={styles.info}>Contenu: {tod.Content}</Text>
+        <Text  style={styles.info}>Date: {tod.date}</Text>
+       </View>
+        ))}
+  </View>
+
+  );
+}
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    backgroundColor: '#fff',
+    alignItems: 'center',
+    justifyContent: 'center',
+  },
+  input:{
+    height: 40,
+    margin: 12,
+    borderWidth: 1,
+  },
+  note:{
+    borderWidth: 1,
+  },
+  info:{
+    fontSize:20,
+    padding:20
+  },
+  titre:{
+    fontSize:50
+  }
+});
